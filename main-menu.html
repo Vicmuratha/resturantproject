@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuickServe POS</title>
+  <link rel="stylesheet" href="../public/css/main-menu.css">
+</head>
+<body>
+  <div class="sidebar">
+    <h1>QuickServe POS</h1>
+    <a href="#" class="tab-link active" data-tab="home"><span class="icon">🏠</span> Home</a>
+    <a href="#" class="tab-link" data-tab="menu"><span class="icon">📋</span> Menu</a>
+    <a href="#" class="tab-link" data-tab="cart"><span class="icon">🛒</span> Cart</a>
+    <a href="#" class="tab-link" data-tab="waiter"><span class="icon">👤</span> Waiter</a>
+    <a href="#" class="tab-link" data-tab="admin"><span class="icon">⚙️</span> Admin</a>
+  </div>
+
+  <div class="main-content">
+    <div class="container">
+    
+      <div id="home" class="tab-content active">
+        <div class="home-header">
+          <h2>Welcome, Admin</h2>
+          <button class="logout-btn">Logout</button>
+        </div>
+        <div class="quick-stats">
+          <div class="stat-card">
+            <div class="stat-icon">🍽️</div>
+            <div class="stat-info">
+              <h3>Today's Orders</h3>
+              <p class="stat-number">42</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">💰</div>
+            <div class="stat-info">
+              <h3>Today's Revenue</h3>
+              <p class="stat-number">KSH 1,245.50</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">⏰</div>
+            <div class="stat-info">
+              <h3>Avg. Order Time</h3>
+              <p class="stat-number">7.2 min</p>
+            </div>
+          </div>
+        </div>
+        <div class="quick-actions">
+          <h3>Quick Actions</h3>
+          <div class="home-buttons">
+            <button class="tab-link action-button" data-tab="menu">
+              <span class="button-icon">📋</span>
+              <span class="button-text">View Menu</span>
+            </button>
+            <button class="tab-link action-button" data-tab="cart">
+              <span class="button-icon">🛒</span>
+              <span class="button-text">Current Orders</span>
+            </button>
+            <button class="tab-link action-button" data-tab="waiter">
+              <span class="button-icon">👤</span>
+              <span class="button-text">Waiter Dashboard</span>
+            </button>
+            <button class="tab-link action-button" data-tab="admin">
+              <span class="button-icon">⚙️</span>
+              <span class="button-text">Admin Panel</span>
+            </button>
+          </div>
+        </div>
+        <div class="recent-activity">
+          <h3>Recent Activity</h3>
+          <div class="activity-list">
+            <div class="activity-item">
+              <div class="activity-icon success">✓</div>
+              <div class="activity-details">
+                <p class="activity-text">Order #1234 completed</p>
+                <p class="activity-time">2 minutes ago</p>
+              </div>
+            </div>
+            <div class="activity-item">
+              <div class="activity-icon warning">!</div>
+              <div class="activity-details">
+                <p class="activity-text">Low stock alert: Beef</p>
+                <p class="activity-time">15 minutes ago</p>
+              </div>
+            </div>
+            <div class="activity-item">
+              <div class="activity-icon info">ℹ️</div>
+              <div class="activity-details">
+                <p class="activity-text">New menu item added: Chapati</p>
+                <p class="activity-time">1 hour ago</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="quick-tips">
+          <h3>Quick Tip</h3>
+          <div class="tip-card">
+            <p>💡 Use the Admin Panel to update menu prices during peak hours for dynamic pricing.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Menu Tab -->
+      <div id="menu" class="tab-content">
+        <div class="menu-header">
+          <h2>Menu</h2>
+          <div class="category-filter">
+            <button class="category-btn">All</button>
+            <button class="category-btn">Main</button>
+            <button class="category-btn">Drinks</button>
+          </div>
+        </div>
+        <div class="search-container">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="menuSearch" class="search-input" placeholder="Search menu items...">
+        </div>
+        <div class="product-grid" id="productGrid">
+          <div class="product" data-name="Ugali Beef" data-price="120">
+            <div class="img-placeholder"></div>
+            <h3>Ugali Beef</h3>
+            <p>KSH 120</p>
+            <button>Add to Cart</button>
+          </div>
+          <div class="product" data-name="Ugali Scrambled" data-price="100">
+            <div class="img-placeholder"></div>
+            <h3>Ugali Scrambled</h3>
+            <p>KSH 100</p>
+            <button>Add to Cart</button>
+          </div>
+          <div class="product" data-name="Rice Beans" data-price="90">
+            <div class="img-placeholder"></div>
+            <h3>Rice Beans</h3>
+            <p>KSH 90</p>
+            <button>Add to Cart</button>
+          </div>
+          <div class="product" data-name="Rice Beef" data-price="150">
+            <div class="img-placeholder"></div>
+            <h3>Rice Beef</h3>
+            <p>KSH 150</p>
+            <button>Add to Cart</button>
+          </div>
+          <div class="product" data-name="Tea" data-price="40">
+            <div class="img-placeholder"></div>
+            <h3>Tea</h3>
+            <p>KSH 40</p>
+            <button>Add to Cart</button>
+          </div>
+          <div class="product" data-name="Eggs" data-price="20">
+            <div class="img-placeholder"></div>
+            <h3>Eggs</h3>
+            <p>KSH 20</p>
+            <button>Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cart Tab -->
+      <div id="cart" class="tab-content">
+        <h2>Cart</h2>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="total" id="totalPrice">Total: KSH 0.00</div>
+        <button class="checkout-btn">Checkout</button>
+      </div>
+
+      <!-- Waiter Tab -->
+      <div id="waiter" class="tab-content">
+        <h2>Waiter Section</h2>
+        <p>Assigned orders will appear here.</p>
+      </div>
+
+      <!-- Admin Tab -->
+      <div id="admin" class="tab-content">
+        <h2>Admin Panel</h2>
+        <p>Manage menu items, view sales reports, and more.</p>
+      </div>
+    </div>
+    <footer>
+      <p>QuickServe POS © 2025</p>
+    </footer>
+  </div>
+
+  <script src="../public/js/main-menu.js"></script>
+</body>
+</html>

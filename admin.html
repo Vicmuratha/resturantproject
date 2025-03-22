@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickServe POS - Reports</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../public/css/admin.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <h2> Admin</h2>
+            <ul>
+                <li><a href="#overview" class="active"><i class="fas fa-tachometer-alt"></i> Overview</a></li>
+                <li><a href="#user-management"><i class="fas fa-users"></i> User Management</a></li>
+                <li><a href="#user-details"><i class="fas fa-user"></i> User Details</a></li>
+            </ul>
+        </nav>
+        <main class="main-content">
+            <div class="report-section" id="overview-section">
+                <div class="header">
+                    <h1><i class="fas fa-chart-line"></i> Reports Overview</h1>
+                    <div class="controls">
+                        <div class="date-range">
+                            <label for="datePreset">Date Range:</label>
+                            <select id="datePreset">
+                                <option value="today">Today</option>
+                                <option value="week">This Week</option>
+                                <option value="month">This Month</option>
+                                <option value="custom">Custom Range</option>
+                            </select>
+                            <div class="custom-date" style="display: none;">
+                                <label for="start-date">Start:</label>
+                                <input type="date" id="start-date" name="start-date" max="2025-03-20">
+                                <label for="end-date">End:</label>
+                                <input type="date" id="end-date" name="end-date" max="2025-03-20">
+                            </div>
+                        </div>
+                        <div class="export-options">
+                            <button class="export-btn"><i class="fas fa-file-pdf"></i> Export PDF</button>
+                            <button class="export-btn"><i class="fas fa-file-csv"></i> Export CSV</button>
+                        </div>
+                    </div>
+                </div>
+                <h2><i class="fas fa-money-bill-wave"></i> Sales Summary</h2>
+                <div class="summary-cards">
+                    <div class="card"><h3><i class="fas fa-coins"></i> Total Sales</h3><p id="total-sales"><i class="fas fa-spinner fa-spin"></i></p><span class="tooltip" title="Total revenue from all orders">ℹ️</span></div>
+                    <div class="card"><h3><i class="fas fa-calculator"></i> Avg. Order Value</h3><p id="avg-order-value"><i class="fas fa-spinner fa-spin"></i></p><span class="tooltip" title="Average value per order">ℹ️</span></div>
+                    <div class="card"><h3><i class="fas fa-trophy"></i> Top Selling Item</h3><p id="top-selling-item"><i class="fas fa-spinner fa-spin"></i></p><span class="tooltip" title="Most frequently sold item">ℹ️</span></div>
+                    <div class="card"><h3><i class="fas fa-shopping-cart"></i> Orders Processed</h3><p id="orders-processed"><i class="fas fa-spinner fa-spin"></i></p><span class="tooltip" title="Total number of orders">ℹ️</span></div>
+                </div>
+                <h2><i class="fas fa-box-open"></i> Inventory Summary</h2>
+                <div class="summary-cards">
+                    <div class="card"><h3><i class="fas fa-boxes"></i> Total Items in Stock</h3><p id="total-items"><i class="fas fa-spinner fa-spin"></i></p><span class="tooltip" title="Total items in inventory">ℹ️</span></div>
+                    <div class="card"><h3><i class="fas fa-exclamation-triangle"></i> Low Stock Items</h3><p id="low-stock-items"><i class="fas fa-spinner fa-spin"></i></p><span class="tooltip" title="Items needing restocking">ℹ️</span></div>
+                    <div class="card"><h3><i class="fas fa-star"></i> Most Used Item</h3><p id="most-used-item"><i class="fas fa-spinner fa-spin"></i></p><span class="tooltip" title="Most frequently used item">ℹ️</span></div>
+                    <div class="card"><h3><i class="fas fa-money-bill"></i> Stock Value</h3><p id="stock-value"><i class="fas fa-spinner fa-spin"></i></p><span class="tooltip" title="Total value of inventory">ℹ️</span></div>
+                </div>
+            </div>
+            <div class="report-section" id="user-management-section" style="display: none;">
+                <h2><i class="fas fa-users"></i> User Management</h2>
+                <button class="add-user-btn"><i class="fas fa-plus"></i> Add New User</button>
+                <div class="user-list">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Username</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="user-table-body">
+                            <!-- Users will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="report-section" id="user-details-section" style="display: none;">
+                <h2><i class="fas fa-user-edit"></i> <span id="user-form-title">Edit User</span></h2>
+                <form id="user-details-form" class="user-form">
+                    <input type="hidden" id="user-id" name="user-id">
+                    <div class="form-group">
+                        <label for="user-name">Full Name <span class="info-tooltip" title="Enter the user's full name">ℹ️</span></label>
+                        <input type="text" id="user-name" name="user-name" placeholder="e.g., John Snow" required aria-required="true">
+                    </div>
+                    <div class="form-group">
+                        <label for="user-username">Username <span class="info-tooltip" title="Unique login name">ℹ️</span></label>
+                        <input type="text" id="user-username" name="user-username" placeholder="e.g., johnsnow123" required aria-required="true">
+                    </div>
+                    <div class="form-group">
+                        <label for="user-email">Email <span class="info-tooltip" title="User's contact email">ℹ️</span></label>
+                        <input type="email" id="user-email" name="user-email" placeholder="e.g., johnsnow@example.com" required aria-required="true">
+                    </div>
+                    <div class="form-group">
+                        <label for="user-phone">Phone Number <span class="info-tooltip" title="10-digit phone number">ℹ️</span></label>
+                        <input type="tel" id="user-phone" name="user-phone" pattern="[0-9]{10}" placeholder="e.g.,071......." required aria-required="true">
+                    </div>
+                    <div class="form-group">
+                        <label for="user-gender">Gender <span class="info-tooltip" title="User's gender">ℹ️</span></label>
+                        <select id="user-gender" name="user-gender" required aria-required="true">
+                            <option value="" disabled selected>Select Gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="user-role">Role <span class="info-tooltip" title="User's access level">ℹ️</span></label>
+                        <select id="user-role" name="user-role" aria-required="true">
+                            <option value="admin">Admin</option>
+                            <option value="waiter">Waiter</option>
+                            <option value="manager">Manager</option>
+                            <option value="cashier">Cashier</option>
+                            <option value="chef">Chef</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="save-btn"><i class="fas fa-save"></i> Save Changes</button>
+                    <button type="button" class="delete-btn" id="delete-user-btn" style="display: none;"><i class="fas fa-trash"></i> Delete User</button>
+                    <div id="feedback" class="feedback-message"></div>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <script src="../public/js/admin.js"></script>
+</body>
+</html>
